@@ -25,12 +25,15 @@ public class PokerManager {
     /**
      * 发牌初始化完成
      */
-    PokerPlayer playerA = new PokerPlayer("A");
-    PokerPlayer playerB = new PokerPlayer("B");
+    PokerPlayer playerA;
+    PokerPlayer playerB;
 
     List<PokerCard> existPokerCard = new ArrayList<>();
 
-    public void InitPokerGame() {
+    public void InitPokerGame(PokerPlayer player1, PokerPlayer player2) {
+        this.playerA = player1;
+        this.playerB = player2;
+
 
         for (int i = 0; i < 3; i++) {
 
@@ -58,6 +61,7 @@ public class PokerManager {
                 }
             }
             playerA.AddPokerCard(card);
+            existPokerCard.add(card);
         }
 
         for (int i = 0; i < 3; i++) {
@@ -86,6 +90,7 @@ public class PokerManager {
                 }
             }
             playerB.AddPokerCard(card);
+            existPokerCard.add(card);
         }
 
 
@@ -93,14 +98,13 @@ public class PokerManager {
             System.out.println(pokerCard.toString());
         }
 
-        System.out.println("A的权重为:"+playerA.getCalcWeigth()+"  A的分数为:"+playerA.getCalcScore());
+        System.out.println(playerA.getPlayerName() + "的  权重为:" + playerA.getCalcWeigth() + "  分数为:" + playerA.getCalcScore());
         System.out.println("---------------------------------------------------------------");
 
         for (PokerCard pokerCard : playerB.PokerCards) {
             System.out.println(pokerCard.toString());
         }
-        System.out.println("B的权重为:"+playerB.getCalcWeigth()+"  A的分数为:"+playerB.getCalcScore());
-
+        System.out.println(playerB.getPlayerName() + "的  权重为:" + playerB.getCalcWeigth() + "  分数为:" + playerB.getCalcScore());
     }
 
     public PokerPlayer getWinner() {
@@ -109,7 +113,7 @@ public class PokerManager {
     }
 
     /**
-     * 创建新的扑克牌,并且确定不会重复
+     * 创建新的扑克牌
      *
      * @return
      */

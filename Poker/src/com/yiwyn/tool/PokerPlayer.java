@@ -68,7 +68,7 @@ public class PokerPlayer {
         if (PokerCards.get(0).getCardType() == PokerCards.get(1).getCardType() && PokerCards.get(0).getCardType() == PokerCards.get(2).getCardType()) {
             return 5;
         }
-        if (PokerCards.get(0).getCardValue() + PokerCards.get(2).getCardValue() == PokerCards.get(1).getCardValue()) {
+        if (PokerCards.get(0).getCardValue() + 1 == PokerCards.get(1).getCardValue() && PokerCards.get(1).getCardValue() + 1 == PokerCards.get(2).getCardValue()) {
             return 4;
         }
         if (PokerCards.get(0).getCardValue() == PokerCards.get(1).getCardValue() && PokerCards.get(1).getCardValue() == PokerCards.get(2).getCardValue()) {

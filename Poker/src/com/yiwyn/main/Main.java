@@ -7,10 +7,19 @@ import com.yiwyn.tool.PokerPlayer;
 public class Main {
 
     public static void main(String[] args) {
-        PokerManager.getInstance().InitPokerGame();
-        PokerPlayer winner = PokerManager.getInstance().getWinner();
 
-        System.out.println("获胜的人是" + winner.getPlayerName());
+        PokerPlayer playerA = new PokerPlayer("玩家A");
+        PokerPlayer playerB = new PokerPlayer("玩家B");
+
+        PokerManager instance = PokerManager.getInstance();
+        instance.InitPokerGame(playerA, playerB);
+        PokerPlayer winner = instance.getWinner();
+
+        if (winner != null) {
+            System.out.println("获胜的人是" + winner.getPlayerName());
+        } else {
+            System.out.println("平局");
+        }
 
 
     }
